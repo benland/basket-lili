@@ -17,7 +17,8 @@ export class AppComponent {
     shufersal: ShufersalService) {
     firebaseConnect.authenticate().then(user => {
       this.user = user;
-      this.items = itemsService.items;
+      this.items = itemsService.items
+        .map(items => items.sort((left, right) => (right.addedDate || 0) - (left.addedDate || 0)));
     });
   }
 
