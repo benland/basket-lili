@@ -10,16 +10,23 @@ import { ItemsService } from './items.service';
 
 import 'hammerjs';
 import { BasketItemComponent } from './basket-item/basket-item.component';
+import { AddItemComponent } from './add-item/add-item.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BasketItemComponent
+    BasketItemComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     HttpModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     FirebaseConnectService,

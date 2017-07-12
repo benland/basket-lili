@@ -15,7 +15,10 @@
   display: inline-block;
 }
 
-
 .buttons {
   text-align-last: left;
+}
+
+.buttons /deep/ .mat-button:hover .mat-button-focus-overlay {
+  opacity: 0;
 }
