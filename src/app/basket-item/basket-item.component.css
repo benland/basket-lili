@@ -2,4 +2,16 @@
   width: 400px;
 }
 
+.heart {
+  background-image: url('../../assets/heart.png');
+  background-repeat: no-repeat;
+  width: 39px;
+  height: 36px;
+  display: inline-block;
+}
+
+.votes-count {
+  display: inline-block;
+}
+
 
