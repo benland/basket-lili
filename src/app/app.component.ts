@@ -10,7 +10,6 @@ import { ItemsService, Item } from './items.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Basket Lili';
   items: Observable<Item[]>;
   user: string;
 

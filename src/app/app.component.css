@@ -1,6 +1,12 @@
 .filler {
   flex: 1;
 }
+
+.header-icon {
+  position: relative;
+  top: 20px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
