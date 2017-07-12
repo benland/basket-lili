@@ -7,6 +7,13 @@
   top: 20px;
 }
 
+@media (max-width: 640px) {
+  .header-icon {
+    width: 75px;
+    top: 0;
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
