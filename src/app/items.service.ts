@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 export class Item {
   _id: string;
-  name: string;
+  title: string;
   image: string;
   voted?: boolean;
   voteCount?: number;
