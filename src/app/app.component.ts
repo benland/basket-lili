@@ -1,3 +1,4 @@
+import { ShufersalService } from './shufersal.service';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { FirebaseConnectService } from './firebase-connect.service';
@@ -13,7 +14,8 @@ export class AppComponent {
   items: Observable<Item[]>;
   user: string;
 
-  constructor(firebaseConnect: FirebaseConnectService, itemsService: ItemsService) {
+  constructor(firebaseConnect: FirebaseConnectService, itemsService: ItemsService,
+    shufersal: ShufersalService) {
     firebaseConnect.authenticate().then(user => {
       this.user = user;
       this.items = itemsService.items;
