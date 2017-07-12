@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { FirebaseConnectService } from './firebase-connect.service';
 import { ItemsService, Item } from './items.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class AppComponent {
   title = 'Basket Lili';
   items: Observable<Item[]>;
 
-  constructor(itemsService: ItemsService) {
+  constructor(firebaseConnect: FirebaseConnectService, itemsService: ItemsService) {
+    firebaseConnect.authenticate();
     this.items = itemsService.items;
   }
 }
