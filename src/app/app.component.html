@@ -9,9 +9,9 @@
   </h1>
   <ul>
     <md-progress-spinner mode="indeterminate" *ngIf="!(items|async)"></md-progress-spinner>
-    <li *ngFor="let item of items|async">
-      {{item.name}}
-      <img [src]="item.image" />
-    </li>
+    <div class="grid">
+      <app-basket-item [item]="item" *ngFor="let item of items|async">
+      </app-basket-item>
+    </div>
   </ul>
 </div>

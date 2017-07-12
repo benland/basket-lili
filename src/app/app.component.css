@@ -1,3 +1,11 @@
 .filler {
   flex: 1;
 }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+app-basket-item {
+  display: inline-grid;
+}

@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { ItemsService } from './items.service';
 
 import 'hammerjs';
+import { BasketItemComponent } from './basket-item/basket-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BasketItemComponent
   ],
   imports: [
     BrowserModule,
