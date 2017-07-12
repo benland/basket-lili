@@ -1,11 +1,9 @@
 <md-card class="basket-item">
   <img md-card-image src="{{item.image}}">
   <md-card-title>{{item.name}}</md-card-title>
-  <md-card-actions>
-    <button md-button>
-      <div>
-        <div class="heart">&nbsp;</div><div class="votes-count">{{item.voteCount}}</div>
-      </div>
-    </button>
+  <md-card-actions class="buttons">
+    <md-button-toggle [checked]="item.voted" class="like-buttons" (click)="toggle()">
+      <div class="heart">&nbsp;</div><div class="votes-count">{{item.voteCount}}</div>
+    </md-button-toggle>
   </md-card-actions>
 </md-card>

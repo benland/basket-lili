@@ -11,7 +11,11 @@
 }
 
 .votes-count {
+  margin-left: 10px;
   display: inline-block;
 }
 
 
+.buttons {
+  text-align-last: left;
+}

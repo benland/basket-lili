@@ -10,9 +10,10 @@ export class Item {
   image: string;
   voted?: boolean;
   voteCount?: number;
-  votes: {
+  votes?: {
     [key: string]: string;
-  }
+  };
+  basic?: boolean;
 }
 
 @Injectable()
@@ -43,5 +44,9 @@ export class ItemsService {
   upvote(item: Item, value: number = 1) {
     const { uid } = this.firebaseConnect;
     this.ref.child(item._id).child('votes').child(uid).set(value);
+  }
+
+  toggleVote(item: Item) {
+    this.upvote(item, item.voted ? 0 : 1);
   }
 }
