@@ -9,6 +9,8 @@ export class Item {
   title: string;
   image: string;
   voted?: boolean;
+  addedDate: number;
+  addedBy: string;
   voteCount?: number;
   votes?: {
     [key: string]: string;
@@ -48,5 +50,26 @@ export class ItemsService {
 
   toggleVote(item: Item) {
     this.upvote(item, item.voted ? 0 : 1);
+  }
+
+  async createItem(id: string, title: string, image: string) {
+    const { uid, email } = this.firebaseConnect;
+    const targetRef = this.ref.child(id);
+
+    const exists = await targetRef.once('value').then(snap => snap.val());
+    if (exists) {
+      targetRef.child('votes').child(uid).set(1);
+      return;
+    }
+
+    await targetRef.set({
+      title,
+      image,
+      votes: {
+        [uid]: 1
+      },
+      addedDate: firebase.database.ServerValue.TIMESTAMP,
+      addedBy: email,
+    });
   }
 }

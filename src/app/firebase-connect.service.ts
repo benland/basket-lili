@@ -14,6 +14,7 @@ const config = {
 @Injectable()
 export class FirebaseConnectService {
   uid: string;
+  email: string;
 
   constructor() {
     firebase.initializeApp(config);
@@ -36,6 +37,7 @@ export class FirebaseConnectService {
       firebase.auth().signInWithRedirect(provider);
     }
     this.uid = user.uid;
+    this.email = user.email;
     return user.email;
   }
 }
