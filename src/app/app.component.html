@@ -6,6 +6,7 @@
     Welcome to {{title}}!!
   </h1>
   <ul>
+    <md-progress-spinner mode="indeterminate" *ngIf="!(items|async)"></md-progress-spinner>
     <li *ngFor="let item of items|async">
       {{item.name}}
       <img [src]="item.image" />
