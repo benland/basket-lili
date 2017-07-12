@@ -3,6 +3,7 @@ import { IShufersalProduct, ShufersalService } from '../shufersal.service';
 import { Observable } from 'rxjs/Observable';
 import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/switchMap';
 import { ItemsService } from '../items.service';
 @Component({
   selector: 'app-add-item',
@@ -20,7 +21,7 @@ export class AddItemComponent implements OnInit {
   ngOnInit() {
     this.filteredOptions =
       this.myControl.valueChanges
-        .mergeMap(name => this.filter(name));
+        .switchMap(name => this.filter(name));
   }
 
   filter(name: string): Observable<IShufersalProduct[]> {
@@ -29,7 +30,6 @@ export class AddItemComponent implements OnInit {
 
   add(item: IShufersalProduct) {
     this.itemsService.createItem(item.id, item.title, item.image);
-
+    this.myControl.patchValue('');
   }
-
 }

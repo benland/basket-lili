@@ -12,6 +12,10 @@
     width: 75px;
     top: 0;
   }
+
+  .user-name {
+    display: none;
+  }
 }
 
 .grid {
@@ -22,3 +26,5 @@
 app-basket-item {
   display: inline-grid;
 }
+
+
