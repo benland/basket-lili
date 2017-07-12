@@ -11,9 +11,12 @@ import { ItemsService, Item } from './items.service';
 export class AppComponent {
   title = 'Basket Lili';
   items: Observable<Item[]>;
+  user: string;
 
   constructor(firebaseConnect: FirebaseConnectService, itemsService: ItemsService) {
-    firebaseConnect.authenticate();
-    this.items = itemsService.items;
+    firebaseConnect.authenticate().then(user => {
+      this.user = user;
+      this.items = itemsService.items;
+    });
   }
 }

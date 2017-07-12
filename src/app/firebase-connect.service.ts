@@ -29,9 +29,11 @@ export class FirebaseConnectService {
 
   async authenticate() {
     const result = await firebase.auth().getRedirectResult();
-    if (!result.user && !firebase.auth().currentUser) {
+    const user = result.user || firebase.auth().currentUser;
+    if (!user) {
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithRedirect(provider);
     }
+    return user.email;
   }
 }
