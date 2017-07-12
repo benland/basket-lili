@@ -13,6 +13,7 @@ const config = {
 
 @Injectable()
 export class FirebaseConnectService {
+  uid: string;
 
   constructor() {
     firebase.initializeApp(config);
@@ -34,6 +35,7 @@ export class FirebaseConnectService {
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithRedirect(provider);
     }
+    this.uid = user.uid;
     return user.email;
   }
 }
