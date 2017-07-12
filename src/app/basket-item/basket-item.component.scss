@@ -1,0 +1,46 @@
+.basket-item {
+  margin: 0 40px 40px 0;
+}
+
+.heart {
+  background-image: url('../../assets/heart.png');
+  background-repeat: no-repeat;
+  position: relative;
+  width: 39px;
+  height: 36px;
+  display: inline-block;
+
+  &:before {
+    content: "";
+    position: absolute;
+    opacity: 0;
+    transition: all 0.3s linear;
+    width: 39px;
+    height: 36px;
+    display: inline-block;
+    background-image: url('../../assets/heart_red.png');
+  }
+}
+
+.heart.selected {
+  &:before {
+    opacity: 1;
+  }
+}
+
+.votes-count {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.buttons /deep/ .mat-button:hover .mat-button-focus-overlay {
+  opacity: 0;
+}
+
+.votes-count { 
+  font-size: 18px;
+}

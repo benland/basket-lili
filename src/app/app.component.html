@@ -11,7 +11,7 @@
   <ul>
     <md-progress-spinner mode="indeterminate" *ngIf="!(items|async)"></md-progress-spinner>
     <div class="grid">
-      <app-basket-item [item]="item" *ngFor="let item of items|async">
+      <app-basket-item [item]="item" *ngFor="let item of items|async; trackBy:trackItem">
       </app-basket-item>
     </div>
   </ul>

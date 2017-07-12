@@ -20,4 +20,8 @@ export class AppComponent {
       this.items = itemsService.items;
     });
   }
+
+  trackItem(item: Item) {
+    return item._id;
+  }
 }

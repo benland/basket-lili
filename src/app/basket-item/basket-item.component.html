@@ -2,8 +2,9 @@
   <img sm-card-image src="{{item.image}}">
   <md-card-title>{{item.title}}</md-card-title>
   <md-card-actions class="buttons">
-    <button md-button (click)="toggle()">
-      <div class="heart">&nbsp;</div><div class="votes-count">{{item.voteCount}}</div>
+    <button md-button (click)="toggle()" disableRipple>
+      <div class="heart" [class.selected]="item.voted">
+        &nbsp;</div><div class="votes-count">{{item.voteCount}}</div>
     </button>
   </md-card-actions>
 </md-card>
