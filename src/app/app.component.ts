@@ -13,6 +13,5 @@ export class AppComponent {
 
   constructor(itemsService: ItemsService) {
     this.items = itemsService.items;
-    this.items.subscribe(console.log);
   }
 }
