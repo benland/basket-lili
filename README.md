@@ -8,4 +8,4 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app 
 
 ## Deploy
 
-Run `npm deploy` to build and upload the app to Firebase hosting.
+Run `npm run deploy` to build and upload the app to Firebase hosting.
