@@ -1,4 +1,5 @@
-<md-icon>search</md-icon>
+<md-icon *ngIf="!loading">search</md-icon>
+<md-icon *ngIf="loading" class="spin">autorenew</md-icon>
 <md-input-container>
   <input type="text" mdInput [formControl]="myControl" [mdAutocomplete]="auto" placeholder="Add new item">
 </md-input-container>

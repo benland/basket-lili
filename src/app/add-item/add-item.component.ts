@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IShufersalProduct, ShufersalService } from '../shufersal.service';
 import { Observable } from 'rxjs/Observable';
 import { FormControl } from '@angular/forms';
-import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/finally';
 import 'rxjs/add/operator/switchMap';
 import { ItemsService } from '../items.service';
 @Component({
@@ -13,6 +13,9 @@ import { ItemsService } from '../items.service';
 export class AddItemComponent implements OnInit {
   filteredOptions;
   myControl = new FormControl();
+  loading = false;
+
+  private pendingRequests = 0;
 
   constructor(private shufersalService: ShufersalService,
   private itemsService: ItemsService) {
@@ -25,7 +28,12 @@ export class AddItemComponent implements OnInit {
   }
 
   filter(name: string): Observable<IShufersalProduct[]> {
-    return this.shufersalService.query(name);
+    this.loading = true;
+    this.pendingRequests++;
+    return this.shufersalService.query(name).finally(() => {
+      this.pendingRequests--;
+      this.loading = this.pendingRequests > 0;
+    });
   }
 
   add(item: IShufersalProduct) {
