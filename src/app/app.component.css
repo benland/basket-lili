@@ -7,6 +7,11 @@
   top: 20px;
 }
 
+.sort-box {
+  margin: 8px 32px 0 0;
+  float: right;
+}
+
 @media (max-width: 640px) {
   .header-icon {
     width: 75px;
@@ -20,6 +25,7 @@
 
 .grid {
   display: grid;
+  direction: rtl;
   grid-template-columns: repeat(4, 1fr);
 }
 

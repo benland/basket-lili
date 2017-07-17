@@ -5,9 +5,17 @@
   <span class="user-name"><md-icon>person</md-icon> {{user}}</span>
 </md-toolbar>
 <div style="text-align:center">
+
+  <md-select class="sort-box" placeholder="Sort" [(ngModel)]="sort">
+    <md-option [value]="SortType.time">Time added</md-option>
+    <md-option [value]="SortType.votes">Votes</md-option>
+    <md-option [value]="SortType.name">Name</md-option>
+  </md-select>
+
   <h1>
     Cast your votes below:
   </h1>
+  
   <ul>
     <md-progress-spinner mode="indeterminate" *ngIf="!(items|async)"></md-progress-spinner>
     <div class="grid">
