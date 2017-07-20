@@ -15,9 +15,11 @@ const config = {
 export class FirebaseConnectService {
   uid: string;
   email: string;
+  usersRef: firebase.database.Reference;
 
   constructor() {
     firebase.initializeApp(config);
+    this.usersRef = firebase.database().ref('/users');
   }
 
   observe<T>(ref: firebase.database.Reference) {
@@ -36,6 +38,10 @@ export class FirebaseConnectService {
       const provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithRedirect(provider);
     }
+    this.usersRef.child(user.uid).update({
+      photo: user.photoURL,
+      name: user.displayName
+    })
     this.uid = user.uid;
     this.email = user.email;
     return user.email;
