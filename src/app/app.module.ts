@@ -13,12 +13,14 @@ import { BasketItemComponent } from './basket-item/basket-item.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpsLinkPipe } from './https-link.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BasketItemComponent,
-    AddItemComponent
+    AddItemComponent,
+    HttpsLinkPipe
   ],
   imports: [
     BrowserModule,

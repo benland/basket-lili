@@ -1,5 +1,5 @@
 <md-card class="basket-item">
-  <img sm-card-image src="{{item.image}}" width="170px" height="170px">
+  <img sm-card-image src="{{item.image|httpsLink}}" width="170px" height="170px">
   <md-card-title>{{item.title}}</md-card-title>
   <md-card-actions class="buttons">
     <button md-button (click)="toggle()" disableRipple>
