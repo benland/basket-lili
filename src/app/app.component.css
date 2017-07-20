@@ -4,7 +4,8 @@
 
 .header-icon {
   position: relative;
-  top: 20px;
+  top: 38px;
+  transform: scale(0.8);
 }
 
 .sort-box {

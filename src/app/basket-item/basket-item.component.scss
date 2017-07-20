@@ -2,6 +2,12 @@
   margin: 0 40px 40px 0;
 }
 
+h3 {
+  font-size: 20px;
+  margin: 12px 0;
+  font-weight: normal;
+}
+
 .heart {
   background-image: url('../../assets/heart.png');
   background-repeat: no-repeat;
@@ -36,8 +42,10 @@
   display: inline-block;
 }
 
-.buttons {
+.mat-card > .buttons {
   text-align: center;
+  padding: 0;
+  margin-bottom: -8px;
 }
 
 .buttons /deep/ .mat-button:hover .mat-button-focus-overlay {
