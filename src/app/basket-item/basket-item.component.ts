@@ -8,9 +8,10 @@ import { Item } from './../items.service';
   styleUrls: ['./basket-item.component.scss']
 })
 export class BasketItemComponent {
+  @Input() item: Item;
+
   constructor(private itemsService: ItemsService) {
   }
-  @Input() item: Item;
 
   toggle() {
     this.itemsService.toggleVote(this.item);

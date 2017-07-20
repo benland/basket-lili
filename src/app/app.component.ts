@@ -39,11 +39,11 @@ export class AppComponent {
   }
 
   updateItems() {
-      let sortFn = (left: Item, right: Item) => {
-        switch(this.sort) {
+      const sortFn = (left: Item, right: Item) => {
+        switch (this.sort) {
           case SortType.votes:
             return (right.voteCount || 0) - (left.voteCount || 0);
-          
+
           case SortType.time:
             return (right.addedDate || 0) - (left.addedDate || 0)
 

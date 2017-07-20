@@ -21,8 +21,9 @@ export class ShufersalService {
   constructor(private http: Http) { }
 
   query(productName: string): Observable<IShufersalProduct[]> {
+    const query = encodeURIComponent(productName);
     return this.http
-      .get(`https://crossorigin.me/http://www.shufersal.co.il/_layouts/Shufersal_Pages/AutoComplete.aspx?searchText=${encodeURIComponent(productName)}`)
+      .get(`https://crossorigin.me/http://www.shufersal.co.il/_layouts/Shufersal_Pages/AutoComplete.aspx?searchText=${query}`)
       .map(response => JSON.parse(/var imgToLoad = (.+)/.exec(response.text())[1]) as IShufersalProductResult[])
       .map(resultSet =>
         resultSet.map(product => ({
