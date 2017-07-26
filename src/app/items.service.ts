@@ -18,14 +18,26 @@ export class Item {
   basic?: boolean;
 }
 
+export class User {
+  _id: string;
+  photo: string;
+  name: string;
+}
+
+export class UsersMap {
+  [key: string]: User;
+}
+
 @Injectable()
 export class ItemsService {
   items: Observable<Item[]>;
 
   private ref: firebase.database.Reference;
+  private usersRef: firebase.database.Reference;
 
   constructor(private firebaseConnect: FirebaseConnectService) {
     this.ref = firebase.database().ref('/items');
+    this.usersRef = firebaseConnect.usersRef;
 
     function countVotes(item: Item) {
       if (!item.votes) {
@@ -71,5 +83,30 @@ export class ItemsService {
       addedDate: firebase.database.ServerValue.TIMESTAMP,
       addedBy: email,
     });
+  }
+
+  votes(item: Item) {
+    const sortFn = (left: User, right: User) => {
+      // Makes sure the current user always appears last
+      if (left._id === this.firebaseConnect.uid) {
+        return 1;
+      }
+      if (right._id === this.firebaseConnect.uid) {
+        return -1;
+      }
+      return 0;
+    }
+
+    const voteUsers = Object.keys(item.votes || {}).filter(key => item.votes[key]);
+    return this.firebaseConnect.observe<UsersMap>(this.usersRef)
+      .map(users => {
+        if (!users) {
+          return [];
+        }
+        return Object.keys(users)
+          .filter(key => voteUsers.includes(key))
+          .map(key => Object.assign({}, users[key], {_id: key}))
+          .sort(sortFn);
+      });
   }
 }
