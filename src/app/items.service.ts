@@ -52,7 +52,8 @@ export class ItemsService {
         _id: key,
         voted: !!(items[key].votes || {})[this.firebaseConnect.uid],
         voteCount: countVotes(items[key]),
-      }, items[key])));
+      }, items[key])))
+      .map(items => items.filter(item => item.voteCount));
   }
 
   upvote(item: Item, value: number = 1) {
