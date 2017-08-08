@@ -9,9 +9,17 @@
         ...
       </span>
     </div>
+    <button md-icon-button (click)="showComments()">
+      {{item.commentCount}}
+      <md-icon>comment</md-icon>
+    </button>
     <button md-button (click)="toggle()" disableRipple>
+
       <div class="heart" [class.selected]="item.voted">
         &nbsp;</div><div class="votes-count">{{item.voteCount}}</div>
     </button>
   </md-card-actions>
+  <div *ngIf="commentsVisible" class="comment-box">
+    <app-comments [item]="item"></app-comments>
+  </div>
 </md-card>

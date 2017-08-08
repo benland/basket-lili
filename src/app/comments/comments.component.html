@@ -1,0 +1,12 @@
+<div *ngFor="let comment of comments; trackBy: trackFn"
+  class="comment-item">
+  <img class="avatar" [src]="(comment.userInfo|async).photo" 
+  [alt]="(comment.userInfo|async).name" [title]="(comment.userInfo|async).name" />
+  {{comment.text}}
+</div>
+<div class="add-comment">
+  <md-icon (click)="addComment()">send</md-icon>
+  <md-input-container>
+    <input type="text" mdInput [(ngModel)]="newCommentText" placeholder="Your comment" />
+  </md-input-container>
+</div>

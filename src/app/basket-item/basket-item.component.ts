@@ -13,6 +13,8 @@ export class BasketItemComponent implements OnChanges {
   voters: Observable<User[]>
   voterNames: Observable<string>;
 
+  commentsVisible: boolean;
+
   constructor(private itemsService: ItemsService) {
   }
 
@@ -29,6 +31,10 @@ export class BasketItemComponent implements OnChanges {
 
   toggle() {
     this.itemsService.toggleVote(this.item);
+  }
+
+  showComments() {
+    this.commentsVisible = !this.commentsVisible;
   }
 
   userId(user: User) {

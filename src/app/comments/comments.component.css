@@ -1,0 +1,23 @@
+.comment-item {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.avatar {  
+  max-height: 32px;
+  max-width: 32px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.add-comment {
+  display: flex;
+  align-items: center;
+}
+
+md-input-container {
+    flex: 1;
+    margin-right: 8px;
+}

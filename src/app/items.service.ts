@@ -4,6 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase';
 import 'rxjs/add/operator/map';
 
+export class Comment {
+  _id?: string;
+  user: string;
+  text: string;
+  time: number;
+}
+
 export class Item {
   _id: string;
   title: string;
@@ -15,6 +22,10 @@ export class Item {
   votes?: {
     [key: string]: string;
   };
+  commentCount?: number;
+  comments?: {
+    [key: string]: Comment;
+  }
   basic?: boolean;
 }
 
@@ -46,12 +57,17 @@ export class ItemsService {
       return Object.keys(item.votes).map(k => item.votes[k]).filter(k => k).length;
     }
 
+    function countComments(item: Item) {
+      return item.comments ? Object.keys(item.comments).length : 0;
+    }
+
     this.items = firebaseConnect
       .observe<{ [key: string]: Item }>(this.ref)
       .map(items => Object.keys(items).map(key => Object.assign({
         _id: key,
         voted: !!(items[key].votes || {})[this.firebaseConnect.uid],
         voteCount: countVotes(items[key]),
+        commentCount: countComments(items[key]),
       }, items[key])))
       .map(items => items.filter(item => item.voteCount));
   }
@@ -109,5 +125,18 @@ export class ItemsService {
           .map(key => Object.assign({}, users[key], {_id: key}))
           .sort(sortFn);
       });
+  }
+
+  addComment(item: Item, text: string) {
+    const { uid } = this.firebaseConnect;
+    this.ref.child(item._id).child('comments').push({
+      text,
+      user: uid,
+      time: firebase.database.ServerValue.TIMESTAMP,
+    });
+  }
+
+  userInfo(userId: string) {
+    return this.firebaseConnect.observe<User>(this.usersRef.child(userId));
   }
 }
