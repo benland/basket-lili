@@ -11,7 +11,7 @@ describe('ItemsService', () => {
     TestBed.configureTestingModule({
       providers: [
         { provide: FirebaseConnectService, useValue: {
-          observe: jasmine.createSpy('observe').and.returnValue(Observable.from([]))
+          observe: jest.fn().mockReturnValue(Observable.from([]))
         } },
         ItemsService
       ]

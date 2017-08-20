@@ -20,10 +20,10 @@ describe('AddItemComponent', () => {
 
   beforeEach(async(() => {
     shufersalMock = {
-      query: jasmine.createSpy('query')
+      query: jest.fn()
     };
     itemsMock = {
-      createItem: jasmine.createSpy('createItem')
+      createItem: jest.fn()
     };
     TestBed.configureTestingModule({
       imports: [MaterialModule, FormsModule, ReactiveFormsModule, NoopAnimationsModule],
@@ -45,14 +45,14 @@ describe('AddItemComponent', () => {
 
   it('should show a loading indicator once user typed a value', () => {
     const mockSubject = new Subject<IShufersalProduct[]>();
-    shufersalMock.query.and.returnValue(mockSubject);
+    shufersalMock.query.mockReturnValue(mockSubject);
     driver.typeText('Test');
     fixture.detectChanges();
     expect(driver.loadingIndicatorVisible()).toBe(true);
   });
 
   it('should display results received from server', () => {
-    shufersalMock.query.and.returnValue(Observable.of([{
+    shufersalMock.query.mockReturnValue(Observable.of([{
       id: '1235',
       title: 'Testing product',
       image: null,
@@ -65,7 +65,7 @@ describe('AddItemComponent', () => {
   });
 
   it('should add an item once you click on it', () => {
-    shufersalMock.query.and.returnValue(Observable.of([{
+    shufersalMock.query.mockReturnValue(Observable.of([{
       id: '1234',
       title: 'Basket Test',
       image: null,
@@ -77,7 +77,7 @@ describe('AddItemComponent', () => {
   });
 
   it('should clear the text box after adding an item', fakeAsync(() => {
-    shufersalMock.query.and.returnValue(Observable.of([{
+    shufersalMock.query.mockReturnValue(Observable.of([{
       id: '1234',
       title: 'Basket Test',
       image: null,

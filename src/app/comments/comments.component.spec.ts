@@ -15,8 +15,8 @@ describe('CommentsComponent', () => {
 
   beforeEach(async(() => {
     itemsMock = {
-      userInfo: jasmine.createSpy('userInfo').and.returnValue(Promise.resolve({photo: null})),
-      addComment: jasmine.createSpy('addComment'),
+      userInfo: jest.fn().mockReturnValue(Promise.resolve({photo: null})),
+      addComment: jest.fn(),
     };
 
     TestBed.configureTestingModule({

@@ -15,7 +15,7 @@ describe('AppComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         { provide: FirebaseConnectService, useValue: {
-          authenticate: jasmine.createSpy('authenticate').and.returnValue(Promise.resolve({}))
+          authenticate: jest.fn().mockReturnValue(Promise.resolve({}))
         } },
         { provide: ItemsService, useValue: {} },
         { provide: ShufersalService, useValue: {} },
