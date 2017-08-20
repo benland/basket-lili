@@ -1,7 +1,7 @@
 <div *ngFor="let comment of comments; trackBy: trackFn"
   class="comment-item">
-  <img class="avatar" [src]="(comment.userInfo|async).photo" 
-  [alt]="(comment.userInfo|async).name" [title]="(comment.userInfo|async).name" />
+  <img class="avatar" [src]="(comment.userInfo|async)?.photo" 
+  [alt]="(comment.userInfo|async)?.name" [title]="(comment.userInfo|async)?.name" />
   {{comment.text}}
 </div>
 <div class="add-comment">

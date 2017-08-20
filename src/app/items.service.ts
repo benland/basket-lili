@@ -47,7 +47,7 @@ export class ItemsService {
   private usersRef: firebase.database.Reference;
 
   constructor(private firebaseConnect: FirebaseConnectService) {
-    this.ref = firebase.database().ref('/items');
+    this.ref = firebaseConnect.itemsRef;
     this.usersRef = firebaseConnect.usersRef;
 
     function countVotes(item: Item) {

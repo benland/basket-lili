@@ -11,7 +11,7 @@ import { ItemsService } from '../items.service';
   styleUrls: ['./add-item.component.css']
 })
 export class AddItemComponent implements OnInit {
-  filteredOptions;
+  filteredOptions: Observable<IShufersalProduct[]>;
   myControl = new FormControl();
   loading = false;
 

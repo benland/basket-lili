@@ -15,10 +15,13 @@ const config = {
 export class FirebaseConnectService {
   uid: string;
   email: string;
-  usersRef: firebase.database.Reference;
+
+  readonly itemsRef: firebase.database.Reference;
+  readonly usersRef: firebase.database.Reference;
 
   constructor() {
     firebase.initializeApp(config);
+    this.itemsRef = firebase.database().ref('/items');
     this.usersRef = firebase.database().ref('/users');
   }
 

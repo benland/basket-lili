@@ -1,32 +1,36 @@
-import { TestBed, async } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TestBed, async, inject } from '@angular/core/testing';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/from';
+
+import { FirebaseConnectService } from './firebase-connect.service';
+import { ItemsService, Item } from './items.service';
+import { ShufersalService } from './shufersal.service';
 
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [
+        { provide: FirebaseConnectService, useValue: {
+          authenticate: jasmine.createSpy('authenticate').and.returnValue(Promise.resolve({}))
+        } },
+        { provide: ItemsService, useValue: {} },
+        { provide: ShufersalService, useValue: {} },
+      ],
       declarations: [
-        AppComponent
+        AppComponent,
       ],
     }).compileComponents();
   }));
 
-  it('should create the app', async(() => {
+  it('should authenticate the user', inject([ItemsService, FirebaseConnectService], (itemsService, firebaseConnect) => {
+    itemsService.items = Observable.from([]);
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
-
-  it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!!');
+    expect(firebaseConnect.authenticate).toHaveBeenCalledWith();
   }));
 });
