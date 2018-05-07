@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MaterialModule } from '@angular/material';
+import { MatCardModule, MatInputModule, MatIconModule, MatAutocompleteModule, MatToolbarModule, MatSelectModule, MatProgressSpinnerModule, MatButtonModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
 
 import { FirebaseConnectService } from './firebase-connect.service';
@@ -28,7 +28,14 @@ import { CommentsComponent } from './comments/comments.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
     HttpModule,
     BrowserAnimationsModule,
   ],

@@ -1,7 +1,7 @@
-<md-card class="basket-item">
+<mat-card class="basket-item">
   <img sm-card-image src="{{item.image|httpsLink}}" width="170px" height="170px">
   <h3>{{item.title}}</h3>
-  <md-card-actions class="buttons">
+  <mat-card-actions class="buttons">
     <div class="voter-list">
       <img *ngFor="let voter of voters|async; trackBy: userId"
           class="voter" [src]="voter.photo" [alt]="voter.name" [title]="voter.name" />
@@ -9,17 +9,17 @@
         ...
       </span>
     </div>
-    <button md-icon-button (click)="showComments()">
+    <button mat-icon-button (click)="showComments()">
       {{item.commentCount}}
-      <md-icon>comment</md-icon>
+      <mat-icon>comment</mat-icon>
     </button>
-    <button md-button (click)="toggle()" disableRipple>
+    <button mat-button (click)="toggle()" disableRipple>
 
       <div class="heart" [class.selected]="item.voted">
         &nbsp;</div><div class="votes-count">{{item.voteCount}}</div>
     </button>
-  </md-card-actions>
+  </mat-card-actions>
   <div *ngIf="commentsVisible" class="comment-box">
     <app-comments [item]="item"></app-comments>
   </div>
-</md-card>
+</mat-card>

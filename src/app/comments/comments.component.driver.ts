@@ -19,6 +19,6 @@ export class CommentsComponentDriver {
     }
 
     clickSendButton() {
-        this.fixture.debugElement.query(By.css('.add-comment md-icon')).nativeElement.click();
+        this.fixture.debugElement.query(By.css('.add-comment mat-icon')).nativeElement.click();
     }
 }

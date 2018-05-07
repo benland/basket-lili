@@ -1,10 +1,10 @@
-<md-icon *ngIf="!loading">search</md-icon>
-<md-icon *ngIf="loading" class="spin">autorenew</md-icon>
-<md-input-container>
-  <input type="text" mdInput [formControl]="myControl" [mdAutocomplete]="auto" placeholder="Add new item">
-</md-input-container>
-<md-autocomplete #auto="mdAutocomplete">
-  <md-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="add(option)">
+<mat-icon *ngIf="!loading">search</mat-icon>
+<mat-icon *ngIf="loading" class="spin">autorenew</mat-icon>
+<mat-form-field>
+  <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Add new item">
+</mat-form-field>
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="add(option)">
     {{ option.title }}
-  </md-option>
-</md-autocomplete>
+  </mat-option>
+</mat-autocomplete>

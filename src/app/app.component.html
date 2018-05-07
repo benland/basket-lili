@@ -1,23 +1,27 @@
-<md-toolbar>
+<mat-toolbar>
   <img class="header-icon" src="/assets/basket_logo.png" />
   <span class="filler"></span>
   <app-add-item></app-add-item>
-  <span class="user-name"><md-icon>person</md-icon> {{user}}</span>
-</md-toolbar>
+  <span class="user-name"><mat-icon>person</mat-icon> {{user}}</span>
+</mat-toolbar>
 <div style="text-align:center">
 
-  <md-select class="sort-box" placeholder="Sort" [(ngModel)]="sort">
-    <md-option [value]="SortType.time">Time added</md-option>
-    <md-option [value]="SortType.votes">Votes</md-option>
-    <md-option [value]="SortType.name">Name</md-option>
-  </md-select>
+  <div style="display:flex">
+    <h1 style="flex: 1">
+      Cast your votes below:
+    </h1>
 
-  <h1>
-    Cast your votes below:
-  </h1>
-  
+    <mat-form-field class="sort-box">
+      <mat-select placeholder="Sort" [(ngModel)]="sort">
+        <mat-option [value]="SortType.time">Time added</mat-option>
+        <mat-option [value]="SortType.votes">Votes</mat-option>
+        <mat-option [value]="SortType.name">Name</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
   <ul>
-    <md-progress-spinner mode="indeterminate" *ngIf="!(items|async)"></md-progress-spinner>
+    <mat-progress-spinner mode="indeterminate" *ngIf="!(items|async)"></mat-progress-spinner>
     <div class="grid">
       <app-basket-item [item]="item" *ngFor="let item of items|async; trackBy:trackItem">
       </app-basket-item>

@@ -17,7 +17,7 @@
   align-items: center;
 }
 
-md-input-container {
+mat-form-field {
     flex: 1;
     margin-right: 8px;
 }

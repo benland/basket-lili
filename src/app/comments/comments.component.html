@@ -5,8 +5,8 @@
   {{comment.text}}
 </div>
 <div class="add-comment">
-  <md-icon (click)="addComment()">send</md-icon>
-  <md-input-container>
-    <input type="text" mdInput [(ngModel)]="newCommentText" placeholder="Your comment" />
-  </md-input-container>
+  <mat-icon (click)="addComment()">send</mat-icon>
+  <mat-form-field>
+    <input type="text" matInput [(ngModel)]="newCommentText" placeholder="Your comment" />
+  </mat-form-field>
 </div>

@@ -20,11 +20,11 @@ export class AddItemComponentDriver {
     }
 
     loadingIndicatorVisible() {
-        return this.fixture.debugElement.query(By.css('md-icon.spin')) !== null;
+        return this.fixture.debugElement.query(By.css('mat-icon.spin')) !== null;
     }
 
     private getItemElements() {
-        return this.fixture.debugElement.queryAll(By.css('md-option'));
+        return this.fixture.debugElement.queryAll(By.css('mat-option'));
     }
 
     getItems() {
